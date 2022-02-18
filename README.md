@@ -9,7 +9,18 @@ stateDiagram
     sales_or_originations --> SalesRootProxy: if RDCaseStage is Sales
     sales_or_originations --> OriginationsRootProxy: if RDCaseStage is Originations
     OriginationsRootProxy --> R0
+
+    note left of R0
+        OriginationsRoot.cs
+    end note 
+
+    
     R0 --> T>R0
+
+    note left of T>R0
+        Translate to Case.cs
+    end note 
+
     T>R0 --> T0|ORIG
     T0|ORIG --> Case
     state sales_stage <<choice>>
@@ -43,6 +54,9 @@ stateDiagram
     R7 --> SalesBuilder
     R8 --> SalesBuilder
     R9 --> SalesBuilder
+    note left of R1
+        SalesRoots.cs
+    end note
     state sales_stage2 <<choice>>
     SalesBuilder --> sales_stage2
     sales_stage2 --> CREATED
@@ -56,8 +70,12 @@ stateDiagram
     sales_stage2 --> PRESUBMISSION
     sales_stage2 --> RATESWITCH
 
-    %% CREATED/ILLUSTRATION
+    %% CREATED/ILLUSTRATION    
     CREATED --> T>R1
+
+    note left of T>R1
+        Translate to Case.cs
+    end note 
     ILLUSTRATION --> T>R1
     T>R1 --> T1|CR
     T1|CR --> NO_MERGE
@@ -161,20 +179,20 @@ stateDiagram
     PRESUBMISSION --> T>R6|PRESUB
     PRESUBMISSION --> T>R7|PRESUB
     PRESUBMISSION --> T>R9|PRESUB
-    T>R2|PRESUB --> T2\PRESUB
-    T>R3|PRESUB --> T3\PRESUB
-    T>R4|PRESUB --> T4\PRESUB
-    T>R5|PRESUB --> T5\PRESUB
-    T>R6|PRESUB --> T6\PRESUB
-    T>R7|PRESUB --> T7\PRESUB
-    T>R9|PRESUB --> T9\PRESUB
-    T2\PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
-    T3\PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
-    T4\PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
-    T5\PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
-    T6\PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
-    T7\PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
-    T9\PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
-    MERGE>T9>T7>T6>T5>T4>T3>T2 --> Case   
+    T>R2|PRESUB --> T2|PRESUB
+    T>R3|PRESUB --> T3|PRESUB
+    T>R4|PRESUB --> T4|PRESUB
+    T>R5|PRESUB --> T5|PRESUB
+    T>R6|PRESUB --> T6|PRESUB
+    T>R7|PRESUB --> T7|PRESUB
+    T>R9|PRESUB --> T9|PRESUB
+    T2|PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
+    T3|PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
+    T4|PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
+    T5|PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
+    T6|PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
+    T7|PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
+    T9|PRESUB --> MERGE>T9>T7>T6>T5>T4>T3>T2
+    MERGE>T9>T7>T6>T5>T4>T3>T2 --> Case  
     
 ```
