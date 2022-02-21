@@ -21,7 +21,14 @@ stateDiagram
         Translate to Case.cs
     end note 
 
+    
+
     T>R0 --> T0|ORIG
+
+    note left of T0|ORIG
+        Case.cs
+    end note 
+
     T0|ORIG --> Case
     state sales_stage <<choice>>
     SalesRootProxy --> sales_stage
@@ -77,9 +84,16 @@ stateDiagram
         Translate to Case.cs
     end note 
     ILLUSTRATION --> T>R1
-    T>R1 --> T1|CR
-    T1|CR --> NO_MERGE
+    T>R1 --> T1|CR\ILL
+    note left of T1|CR\ILL
+        Case.cs
+    end note 
+    T1|CR\ILL --> NO_MERGE
     NO_MERGE --> Case
+
+    note left of Case
+        Case.cs
+    end note
 
     %% RATESWITCH
     RATESWITCH --> T>R9|RS
