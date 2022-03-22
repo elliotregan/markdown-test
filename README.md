@@ -1,3 +1,4 @@
+Foo
 ```mermaid
 stateDiagram
     direction LR
